@@ -114,7 +114,7 @@ function Expenses() {
 function ExpenseForm({ expense, onClose }: { expense: Expense | null; onClose: () => void }) {
   const [description, setDescription] = useState(expense?.description ?? "");
   const [amount, setAmount] = useState(expense ? String(expense.amount) : "");
-  const [category, setCategory] = useState(expense?.category ?? EXPENSE_CATEGORIES[0]);
+  const [category, setCategory] = useState(expense?.category ?? EXPENSE_CATEGORIES[0]!);
   const [date, setDate] = useState(expense?.date ?? dateKey(new Date()));
   const [error, setError] = useState("");
   function submit(e: React.FormEvent) {

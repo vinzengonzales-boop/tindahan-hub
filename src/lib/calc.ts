@@ -20,8 +20,8 @@ export type Settings = {
   storeName: string;
   lowStockThreshold: number;
   currencySymbol: string;
-  passwordHash?: string;
-  passwordSalt?: string;
+  passwordHash?: string | undefined;
+  passwordSalt?: string | undefined;
 };
 
 export type StockStatus = "In Stock" | "Low Stock" | "Out of Stock";

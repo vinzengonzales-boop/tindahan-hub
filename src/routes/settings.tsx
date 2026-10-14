@@ -91,7 +91,7 @@ function SettingsPage() {
     try {
       const parsed = JSON.parse(await f.text());
       const err = validateBackup(parsed);
-      if (err) return toast.error(err);
+      if (err) return void toast.error(err);
       setPending(parsed);
     } catch {
       toast.error("This file is not valid JSON.");
@@ -198,12 +198,12 @@ function ChangePassword() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     const h = await hashPassword(cur, d.settings.passwordSalt ?? "");
-    if (h !== d.settings.passwordHash) return toast.error("Current password is wrong.");
+    if (h !== d.settings.passwordHash) return void toast.error("Current password is wrong.");
     const err = validateNewPassword(pw, pw2);
-    if (err) return toast.error(err);
+    if (err) return void toast.error(err);
     const salt = makeSalt();
     const r = setPasswordHash(await hashPassword(pw, salt), salt);
-    if (!r.ok) return toast.error(r.error);
+    if (!r.ok) return void toast.error(r.error);
     toast.success("Password changed.");
     setCur(""); setPw(""); setPw2("");
   }

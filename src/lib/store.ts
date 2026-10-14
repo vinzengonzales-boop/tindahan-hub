@@ -226,7 +226,7 @@ function nextSaleId(sales: Sale[], now: Date): string {
 }
 
 /** Saves the sale AND deducts stock together. If anything is invalid, nothing changes. */
-export function checkout(items: SaleItem[], paid: number): Result & { sale?: Sale } {
+export function checkout(items: SaleItem[], paid: number): Result & { sale?: Sale | undefined } {
   let created: Sale | undefined;
   const res = update((d) => {
     const err = validateCheckout(items, d.products, paid);
@@ -380,7 +380,8 @@ const isStr = (s: unknown) => typeof s === "string";
 /** Checks that an object looks like a valid Sari-Sari Manager backup. */
 export function validateBackup(x: unknown): string | null {
   if (!x || typeof x !== "object") return "File is not a valid backup.";
-  const d = x as Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const d = x as any;
   if (d.version !== 1) return "Unsupported backup version.";
   const arrays = ["products", "sales", "customers", "debts", "payments", "expenses"];
   for (const k of arrays) if (!Array.isArray(d[k])) return `Backup is missing "${k}".`;
