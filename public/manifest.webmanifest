@@ -1,0 +1,9 @@
+{
+  "name": "Sari-Sari Manager",
+  "short_name": "Sari-Sari",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8f6",
+  "theme_color": "#1f7a46",
+  "icons": [{ "src": "/favicon.ico", "sizes": "64x64", "type": "image/x-icon" }]
+}
