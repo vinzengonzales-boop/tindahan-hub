@@ -8,9 +8,9 @@ import { dateKey, stockStatus, sumSales, totalOutstanding } from "@/lib/calc";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Sari-Sari Manager" },
+      { title: "Dashboard — Tindahan Hub" },
       { name: "description", content: "Daily sales, stock alerts and utang summary for your sari-sari store." },
-      { property: "og:title", content: "Dashboard — Sari-Sari Manager" },
+      { property: "og:title", content: "Dashboard — Tindahan Hub" },
       { property: "og:description", content: "Daily sales, stock alerts and utang summary for your sari-sari store." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
