@@ -94,6 +94,26 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
+  // Pre-load all page chunks into hardware memory for absolute offline cold-booting
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => {
+            console.log('Offline Engine Loaded:', reg.scope);
+            
+            // Forces phone to cache your sub-pages (POS, Inventory, Customers) while online
+            const router = (window as any).startInstance?.router;
+            if (router?.routesById) {
+              Object.values(router.routesById).forEach((route: any) => {
+                if (route.path) router.loadRouteChunk(route.path).catch(() => {});
+              });
+            }
+          })
+          .catch((err) => console.error('Offline Setup Failed:', err));
+      });
+    }
+  }, []);
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
