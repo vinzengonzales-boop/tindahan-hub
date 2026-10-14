@@ -61,7 +61,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }
   if (!unlocked) return <LoginScreen hasPassword={!!data.settings.passwordHash} onUnlock={() => setU(true)} />;
 
-  const current = NAV.find((n) => n.to === pathname)?.label ?? "Sari-Sari Manager";
+  const current = NAV.find((n) => n.to === pathname)?.label ?? "Tindahan Hub";
 
   const navList = (
     <nav aria-label="Main" className="flex flex-col gap-1">
@@ -96,7 +96,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex items-center gap-2 px-2 py-1 text-sidebar-foreground">
       <Store className="size-6" aria-hidden />
       <div className="leading-tight">
-        <p className="font-extrabold">Sari-Sari Manager</p>
+        <p className="font-extrabold">Tindahan Hub</p>
         <p className="text-xs opacity-75">{data.settings.storeName}</p>
       </div>
     </div>
@@ -130,7 +130,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Menu className="size-6" />
           </button>
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-primary lg:hidden">Sari-Sari Manager</p>
+            <p className="text-xs font-semibold text-primary lg:hidden">Tindahan Hub</p>
             <h1 className="truncate text-lg font-bold">{current}</h1>
           </div>
           {!online && (
@@ -199,7 +199,7 @@ function LoginScreen({ hasPassword, onUnlock }: { hasPassword: boolean; onUnlock
           <div className="flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
             <Store className="size-7" />
           </div>
-          <h1 className="text-2xl font-extrabold">Sari-Sari Manager</h1>
+          <h1 className="text-2xl font-extrabold">Tindahan Hub</h1>
           <p className="text-sm text-muted-foreground">
             {hasPassword ? "Enter the owner password to continue." : "First time? Create an owner password to protect this app."}
           </p>
