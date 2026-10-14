@@ -97,7 +97,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <Store className="size-6" aria-hidden />
       <div className="leading-tight">
         <p className="font-extrabold">Tindahan Hub</p>
-        <p className="text-xs opacity-75">{data.settings.storeName}</p>
+        <p className="text-xs opacity-75">Simple Store Management for Every Tindahan</p>
       </div>
     </div>
   );
