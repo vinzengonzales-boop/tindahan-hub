@@ -44,7 +44,7 @@ function Customers() {
   function add(e: React.FormEvent) {
     e.preventDefault();
     const r = addCustomer(newName);
-    if (!r.ok) return toast.error(r.error);
+    if (!r.ok) return void toast.error(r.error);
     toast.success("Customer added.");
     setNewName("");
     setSelected(r.id ?? null);

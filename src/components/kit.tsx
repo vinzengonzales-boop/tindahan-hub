@@ -133,7 +133,7 @@ export function fmtDateTime(iso: string) {
 }
 export function fmtDate(key: string) {
   const [y, m, d] = key.split("-").map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString("en-PH", { dateStyle: "medium" });
+  return new Date(y ?? 2000, (m ?? 1) - 1, d ?? 1).toLocaleDateString("en-PH", { dateStyle: "medium" });
 }
 
 /** Receipt dialog with a Print button. */

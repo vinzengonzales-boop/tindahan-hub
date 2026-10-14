@@ -55,7 +55,7 @@ function POS() {
   function add(pId: string) {
     const p = d.products.find((x) => x.id === pId)!;
     const inCart = cart.find((i) => i.productId === pId);
-    if ((inCart?.qty ?? 0) + 1 > p.stock) return toast.error(`Not enough stock for ${p.name}.`);
+    if ((inCart?.qty ?? 0) + 1 > p.stock) return void toast.error(`Not enough stock for ${p.name}.`);
     if (inCart) setQty(pId, inCart.qty + 1);
     else setCart((c) => [...c, { productId: p.id, name: p.name, price: p.price, qty: 1 }]);
   }
@@ -65,7 +65,7 @@ function POS() {
     busy.current = true;
     const r = checkout(cart, paid);
     busy.current = false;
-    if (!r.ok) return toast.error(r.error);
+    if (!r.ok) return void toast.error(r.error);
     toast.success(`Sale ${r.sale!.id} saved. Change: ${money(r.sale!.change)}`);
     setCart([]);
     setPaidStr("");

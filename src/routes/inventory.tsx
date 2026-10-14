@@ -151,7 +151,7 @@ function Inventory() {
 
 function ProductForm({ product, onClose }: { product: Product | null; onClose: () => void }) {
   const [name, setName] = useState(product?.name ?? "");
-  const [category, setCategory] = useState(product?.category ?? PRODUCT_CATEGORIES[0]);
+  const [category, setCategory] = useState(product?.category ?? PRODUCT_CATEGORIES[0]!);
   const [price, setPrice] = useState(product ? String(product.price) : "");
   const [stock, setStock] = useState(product ? String(product.stock) : "");
   const [error, setError] = useState("");
